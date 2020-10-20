@@ -91,4 +91,21 @@ def has_balanced_parens(string):
 
 
 def compress(string):
-    pass  # TODO: replace this line with your code
+    compressed = []
+    curr_char = ''
+    char_count = 0
+
+    for char in string:
+        if char != curr_char:
+            compressed.append(curr_char)
+            if char_count > 1:
+                compressed.append(str(char_count))
+            curr_char = char
+            char_count = 0
+        char_count += 1
+        
+    compressed.append(curr_char)
+    if char_count > 1:
+        compressed.append(str(char_count))
+    
+    return "".join(compressed)
